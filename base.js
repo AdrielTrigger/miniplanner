@@ -55,7 +55,8 @@ taskList.addEventListener('click', (e) => {
     if (e.target && e.target.classList.contains('deletion')) {
         listOfTasks.splice(e.target.parentElement.id - 1, 1);
         saveList(listOfTasks);
-        console.log(e.target.parentElement.id);
+        taskList.innerHTML = '';
+        renderTaskList(listOfTasks, taskList);
     }
 });
 

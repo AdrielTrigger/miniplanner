@@ -42,3 +42,15 @@ form *, .task-list * {
 form {
     display: none;
 }
+
+/* task list and its items */
+
+.task-list div {
+    color: rgb(133, 233, 233);
+    background-color: rgb(36, 135, 160);
+}
+
+.task-list div:hover {
+    color: rgb(36, 135, 160);
+    background-color: rgb(133, 233, 233);
+}
