@@ -1,0 +1,24 @@
+whenever creating a new electron.js app:
+- create a main.js file
+- in the main.js file:
+    - import the 'app' and 'BrowserWindow' modules from 'electron'
+    - create the 'createWindow' function
+    - declare loading of the main html file
+    - declare calling of the 'createWindow' function with the 'app' module
+
+bundling code for the electron.js app:
+- install webpack in the project's root directory (npm install webpack webpack-cli --save-dev)
+- include "private": true key-value pair in package.json main scope
+to enable code modularization:
+- create a webpack.config.js file and:
+    - import the 'path' module (const path = require('path'))
+    - export an object containing info on entry and output of app code:
+        - do it with module.exports = {}
+        - first key-value pair is the entry file, enter the path up to the base script
+        - second key-value pair is the output object, which contains:
+            - filename: a string with the output file name
+            - path: the path module will direct the output file to the folder you define here (path.resolve(__dirname, name_of_the_folder)
+to use the bundled code, point to the webpack compiled script in the script tag of your main html file
+
+npm start: test run the app
+npm run build: webpack "compilation"
