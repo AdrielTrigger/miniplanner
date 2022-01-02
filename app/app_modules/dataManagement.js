@@ -9,12 +9,7 @@ function saveList (array) {
 
 function loadList () {
     let loadedData = fs.readFileSync('./list.json');
-    console.log(loadedData.length);
-    console.log(`${typeof(loadedData)}`);
-    loadedData = JSON.parse(loadedData);
-    console.log(loadedData.length);
-    console.log(`after parsing: ${typeof(loadedData)}`);
-    return loadedData;
+    return JSON.parse(loadedData);
 }
 
 export { saveList, loadList }

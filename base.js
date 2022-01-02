@@ -13,21 +13,19 @@ const taskList = document.querySelector('.task-list');
 var listOfTasks = [];
 
 let loadedData = loadList();
-console.log('after changing modules: ' + typeof(loadedData));
-let i = 0;
 
-function recover (data, container, array) {
+function recover (data, array) {
     if (data) {
-        console.log('tipo da joça dentro de recover ' + typeof(data));
-        console.log(data);
-        while (i < data.length) {
-            console.log(data[i]);
+        for (let i = 0; i < data.length; i++) {
+            let name = data[i].name;
+            let task = new Task (name);
+            array.push(task);
         }
     }
 }
 
 if (loadedData.length > 0) {
-    recover(loadedData, taskList, listOfTasks);
+    recover(loadedData, listOfTasks);
 
     renderTaskList(listOfTasks, taskList);
 }

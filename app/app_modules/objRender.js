@@ -26,7 +26,7 @@ function renderTask (taskName, container) {
 }
 
 function renderTaskList (list, container) {
-    for (i = 0; i < list.length; i++) {
+    for (let i = 0; i < list.length; i++) {
         renderTask(list[i].name, container);
     }
 }
