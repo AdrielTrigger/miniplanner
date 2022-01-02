@@ -12,12 +12,17 @@ const taskList = document.querySelector('.task-list');
 
 var listOfTasks = [];
 
-let loadedData = await loadList();
+let loadedData = loadList();
+console.log('after changing modules: ' + typeof(loadedData));
+let i = 0;
 
 function recover (data, container, array) {
-    for (let i = 0; i < data.length; i++) {
-        let task = new Task (data[i].name, container);
-        array.push(task);
+    if (data) {
+        console.log('tipo da joça dentro de recover ' + typeof(data));
+        console.log(data);
+        while (i < data.length) {
+            console.log(data[i]);
+        }
     }
 }
 
