@@ -12,8 +12,6 @@ const taskList = document.querySelector('.task-list');
 
 var listOfTasks = [];
 
-let loadedData = loadList();
-
 function recover (data, array) {
     if (data) {
         for (let i = 0; i < data.length; i++) {
@@ -24,7 +22,9 @@ function recover (data, array) {
     }
 }
 
-if (loadedData.length > 0) {
+if (loadList()) {
+    let loadedData = loadList();
+
     recover(loadedData, listOfTasks);
 
     renderTaskList(listOfTasks, taskList);
@@ -39,7 +39,7 @@ taskForm.addEventListener('submit', (e) => {
     if (taskInput.value != '') {
         listOfTasks.push(new Task(taskInput.value));
         saveList(listOfTasks);
-        renderTask(taskInput.value, taskList);
+        renderTask(taskInput.value, taskList, listOfTasks.length);
         closeForm(newTaskButton, taskForm);
     }
     taskInput.value = '';
@@ -50,3 +50,13 @@ cancelTask.addEventListener('click', (e) => {
     closeForm(newTaskButton, taskForm);
     taskInput.value = '';
 });
+
+taskList.addEventListener('click', (e) => {
+    if (e.target && e.target.classList.contains('deletion')) {
+        listOfTasks.splice(e.target.parentElement.id - 1, 1);
+        saveList(listOfTasks);
+        console.log(e.target.parentElement.id);
+    }
+});
+
+export { listOfTasks, taskList }

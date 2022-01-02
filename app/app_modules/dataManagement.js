@@ -8,8 +8,10 @@ function saveList (array) {
 }
 
 function loadList () {
-    let loadedData = fs.readFileSync('./list.json');
-    return JSON.parse(loadedData);
+    if (fs.existsSync('./list.json')) {
+        let loadedData = fs.readFileSync('./list.json');
+        return JSON.parse(loadedData);
+    }
 }
 
 export { saveList, loadList }
