@@ -45,12 +45,18 @@ form {
 
 /* task list and its items */
 
-.task-list div {
-    color: rgb(133, 233, 233);
-    background-color: rgb(36, 135, 160);
+ul {
+    list-style-type: none;
+    user-select: none;
 }
 
-.task-list div:hover {
+.task-list li {
+    color: rgb(133, 233, 233);
+    background-color: rgb(36, 135, 160);
+    padding: 1px 3px;
+}
+
+.task-list li:hover {
     color: rgb(36, 135, 160);
     background-color: rgb(133, 233, 233);
 }

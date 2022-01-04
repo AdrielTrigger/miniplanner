@@ -2,15 +2,15 @@ import { openForm, closeForm, renderTask, renderTaskList } from './app/app_modul
 import { Task } from './app/app_modules/classes.js';
 import { saveList, loadList } from './app/app_modules/dataManagement.js';
 
-const newTaskButton = document.getElementById('new-task');
+const newTaskButton = document.querySelector('#new-task-button');
 
-const taskForm = document.querySelector('form');
-const taskInput = document.getElementById('task-name');
-const cancelTask = document.getElementById('cancel-task');
+const taskForm = document.querySelector('.task-form');
+const taskInput = document.querySelector('#task-name');
+const cancelTask = document.querySelector('#cancel-task');
 
 const taskList = document.querySelector('.task-list');
 
-var listOfTasks = [];
+var taskArray = [];
 
 function recover (data, array) {
     if (data) {
@@ -25,9 +25,9 @@ function recover (data, array) {
 if (loadList()) {
     let loadedData = loadList();
 
-    recover(loadedData, listOfTasks);
+    recover(loadedData, taskArray);
 
-    renderTaskList(listOfTasks, taskList);
+    renderTaskList(taskArray, taskList);
 }
 
 newTaskButton.addEventListener('click', () => {
@@ -37,9 +37,9 @@ newTaskButton.addEventListener('click', () => {
 taskForm.addEventListener('submit', (e) => {
     e.preventDefault();
     if (taskInput.value != '') {
-        listOfTasks.push(new Task(taskInput.value));
-        saveList(listOfTasks);
-        renderTask(taskInput.value, taskList, listOfTasks.length);
+        taskArray.push(new Task(taskInput.value));
+        saveList(taskArray);
+        renderTask(taskInput.value, taskList);
         closeForm(newTaskButton, taskForm);
     }
     taskInput.value = '';
@@ -52,12 +52,15 @@ cancelTask.addEventListener('click', (e) => {
 });
 
 taskList.addEventListener('click', (e) => {
-    if (e.target && e.target.classList.contains('deletion')) {
-        listOfTasks.splice(e.target.parentElement.id - 1, 1);
-        saveList(listOfTasks);
-        taskList.innerHTML = '';
-        renderTaskList(listOfTasks, taskList);
+    let array = document.querySelectorAll('.task-item');
+    for (let i = 0; i < array.length; i++) {
+        if (e.target.parentElement === array[i] && e.target.classList.contains('deletion')) {
+            taskArray.splice(i,1);
+            saveList(taskArray);
+            taskList.removeChild(e.target.parentElement);
+            return;
+        }
     }
 });
 
-export { listOfTasks, taskList }
+export { taskArray, taskList }
