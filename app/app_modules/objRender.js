@@ -31,4 +31,23 @@ function renderTaskList (list, container) {
     }
 }
 
-export { openForm, closeForm, renderTask, renderTaskList };
+function renderHabit (habitName, container) {
+    let habit = document.createElement('li');
+    habit.classList.add('habit-item');
+    habit.innerHTML = habitName;
+
+    let deleteButton = document.createElement('button');
+    deleteButton.innerHTML = 'Excluir';
+    deleteButton.classList.add('deletion');
+    habit.appendChild(deleteButton);
+
+    container.appendChild(habit);
+}
+
+function renderHabitList (list, container) {
+    for (let i = 0; i < list.length; i++) {
+        renderHabit(list[i].name, container);
+    }
+}
+
+export { openForm, closeForm, renderTask, renderTaskList, renderHabit, renderHabitList };

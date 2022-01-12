@@ -1,17 +1,31 @@
 const fs = window.require('fs');
 
-function saveList (array) {
+function saveTasks (array) {
     let list = JSON.stringify(array);
-    fs.writeFile('list.json', list, (err) => {
+    fs.writeFile('tasks.json', list, (err) => {
         if (err) throw err;
     });
 }
 
-function loadList () {
-    if (fs.existsSync('./list.json')) {
-        let loadedData = fs.readFileSync('./list.json');
+function saveHabits (array) {
+    let list = JSON.stringify(array);
+    fs.writeFile('habits.json', list, (err) => {
+        if (err) throw err;
+    });
+}
+
+function loadTasks () {
+    if (fs.existsSync('./tasks.json')) {
+        let loadedData = fs.readFileSync('./tasks.json');
         return JSON.parse(loadedData);
     }
 }
 
-export { saveList, loadList }
+function loadHabits () {
+    if (fs.existsSync('./habits.json')) {
+        let loadedData = fs.readFileSync('./habits.json');
+        return JSON.parse(loadedData);
+    }
+}
+
+export { saveTasks, loadTasks, saveHabits, loadHabits }

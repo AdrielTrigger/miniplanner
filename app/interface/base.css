@@ -12,7 +12,7 @@ body {
     height: 100vh;
 }
 
-form *, .task-list * {
+form *, .task-list *, .habit-list * {
     margin: 3px;
 }
 
@@ -27,6 +27,7 @@ form *, .task-list * {
     color: rgb(133, 233, 233);
     background-color: rgb(36, 135, 160);
     padding: 5px;
+    margin-top: 15px;
 }
 
 .buttons:hover {
@@ -50,13 +51,22 @@ ul {
     user-select: none;
 }
 
-.task-list li {
+.task-list, .habit-list {
+    width: 45vw;
+    border: 2px solid rgb(36, 135, 160);
+    border-radius: 10px;
+    margin-top: 5px;
+}
+
+li {
     color: rgb(133, 233, 233);
     background-color: rgb(36, 135, 160);
+    border-radius: 6px;
     padding: 1px 3px;
 }
 
-.task-list li:hover {
+li:hover {
+    transition: 300ms;
     color: rgb(36, 135, 160);
     background-color: rgb(133, 233, 233);
 }

@@ -10,7 +10,7 @@
         <button class="buttons" id="new-task-button">Nova Tarefa</button>
 
         <form class="task-form">
-            <label for="task-name"></label>
+            <label for="task-name">O que vamos fazer?</label>
             <input type="text" id="task-name">
             <input class="buttons" type="submit" value="Criar Tarefa">
             <button class="buttons" id="cancel-task">Cancelar</button>
@@ -18,6 +18,19 @@
 
         <div class="task-container">
             <ul class="task-list"></ul>
+        </div>
+
+        <button class="buttons" id="new-habit-button">Novo Hábito</button>
+
+        <form class="habit-form">
+            <label for="habit-name">Hoje nós vamos...</label>
+            <input type="text" id="habit-name">
+            <input class="buttons" type="submit" value="Criar Hábito">
+            <button class="buttons" id="cancel-habit">Cancelar</button>
+        </form>
+
+        <div class="habit-container">
+            <ul class="habit-list"></ul>
         </div>
         
         <script src="../app.js"></script>
